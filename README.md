@@ -1,6 +1,6 @@
 # Agentes JMS en VS Code
 
-Esta carpeta trae los 6 agentes de JMS Ingenieros Consultores (más el coordinador), organizados en cuatro áreas: Comercial, Técnica, Gestión y Administración. Funciona con dos asistentes de VS Code: **Claude Code** y **GitHub Copilot**.
+Esta carpeta trae los 7 agentes de JMS Ingenieros Consultores (más el coordinador), organizados en cuatro áreas: Comercial, Técnica, Gestión y Administración. Funciona con dos asistentes de VS Code: **Claude Code** y **GitHub Copilot**.
 
 ## Cómo abrirla
 
@@ -17,7 +17,7 @@ Esta carpeta trae los 6 agentes de JMS Ingenieros Consultores (más el coordinad
 | Área | Agente |
 |---|---|
 | Comercial | `comercial-desarrollo`, `comercial-licitaciones` |
-| Técnica | `tecnica-asistencia`, `tecnica-documentacion` |
+| Técnica | `tecnica-asistencia`, `tecnica-documentacion`, `tecnica-estimacion-inversion` |
 | Gestión | `gestion-control-proyectos` |
 | Administración | `administracion-finanzas` |
 

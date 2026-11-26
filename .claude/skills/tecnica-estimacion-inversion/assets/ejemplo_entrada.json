@@ -1,0 +1,24 @@
+{
+  "proyecto": "Ejemplo — Ampliación planta industrial",
+  "mandante": "[Mandante]",
+  "ubicacion": "Concepción, Región del Biobío",
+  "uf": 41412.34,
+  "fecha_uf": "26-11-2026",
+  "fuente_uf": "SII, valor UF 26-11-2026 ($41.412,34), sii.cl/valores_y_fechas/uf/uf2026.htm",
+  "factor_regional": 1.0,
+  "factor_mercado": 1.0,
+  "gastos_generales": 0.0,
+  "utilidades": 0.0,
+  "contingencia": 0.20,
+  "honorarios": 0.0,
+  "iva": 0.19,
+  "recintos": [
+    {"descripcion": "Nave de procesos (estructura de acero)", "superficie": 1200, "clase": "A", "categoria": "3"},
+    {"descripcion": "Edificio de oficinas (hormigón armado, 2 pisos)", "superficie": 450, "clase": "B", "categoria": "2"},
+    {"descripcion": "Casino y camarines (albañilería confinada)", "superficie": 280, "clase": "C", "categoria": "3"},
+    {"descripcion": "Bodega de insumos (galpón acero/acero)", "superficie": 800, "clase": "AA", "categoria": "b"},
+    {"descripcion": "Portería (madera)", "superficie": 40, "clase": "E", "categoria": "3"}
+  ],
+  "comparar": {"superficie": 1000, "categoria": "3", "categoria_galpon": "b"},
+  "notas": ["Ejemplo con datos ficticios para mostrar el formato de la planilla."]
+}

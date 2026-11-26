@@ -29,6 +29,7 @@ Actuar como coordinador de los agentes de JMS Ingenieros Consultores. Identifica
 | Comercial | `comercial-licitaciones` | Analizar bases, TDR o solicitudes de cotización; preparar consultas, matriz de cumplimiento, metodología, estimación de HH y propuesta técnica-económica. |
 | Técnica | `tecnica-asistencia` | Buscar criterios y antecedentes, estructurar memorias de cálculo, revisar consistencia de unidades, supuestos y normas, preparar checklists de revisión independiente. |
 | Técnica | `tecnica-documentacion` | Redactar borradores de informes, actas y minutas, estandarizar formatos y versiones, consolidar observaciones de revisores. |
+| Técnica | `tecnica-estimacion-inversion` | Estimar la inversión de un proyecto en UF y pesos por superficie y material (hormigón armado, albañilería, acero, madera, galpones), con planilla Excel y UF editable. |
 | Gestión | `gestion-control-proyectos` | Comparar HH presupuestadas vs reales, detectar desviaciones, controlar cambios de alcance, calcular margen por proyecto y disciplina, reportes de avance. |
 | Administración | `administracion-finanzas` | Proyectar flujo de caja, controlar cuentas por cobrar y estados de pago, analizar utilización y costo de personal, tablero gerencial. |
 
