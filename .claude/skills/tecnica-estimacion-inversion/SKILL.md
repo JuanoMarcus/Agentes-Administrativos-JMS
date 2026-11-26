@@ -8,12 +8,12 @@ description: >
   "comparar hormigón armado vs albañilería vs acero vs madera", "galpón", "bodega", or wants a planilla
   with montos en UF y en pesos and the option to change the valor de la UF.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # Agente de Estimación de Inversión
 
-Objetivo: a partir de planos y especificaciones técnicas, **armar el itemizado, cubicar cada ítem, desarrollar el análisis de precio unitario (APU) de cada uno y calcular la inversión por ítem, capítulo y total**, en UF y en pesos, en una planilla Excel donde el valor de la UF y todos los supuestos se pueden cambiar.
+Objetivo: a partir de planos y especificaciones técnicas, **armar el itemizado, cubicar cada ítem, desarrollar el análisis de precio unitario (APU) de cada uno y calcular la inversión por ítem, capítulo y total**, en el formato de Cuadro de Precios (CDP) de JMS, en pesos y en UF, en una planilla Excel donde el valor de la UF y todos los supuestos se pueden cambiar.
 
 Si todavía no hay planos (etapa de perfil), hacer la estimación paramétrica por m² y material (paso 7) y declararla como orden de magnitud.
 
@@ -52,41 +52,44 @@ python3 .claude/skills/tecnica-estimacion-inversion/scripts/leer_pdf_plano.py ET
 - Criterios de medición en `references/cubicacion-itemizado.md`, sección 3.
 - Nunca inventar medidas. Lo no definido va como **SUPUESTO** en Observaciones, con su criterio. Las contradicciones entre documentos se listan como consultas.
 
-### 4. Análisis de precios unitarios
+### 4. Análisis de precios unitarios (formato JMS)
 
 Seguir `references/apu.md`:
 
-- Cargar en la lista de insumos cada material, categoría de mano de obra, equipo y subcontrato, con precio (CLP o UF), fuente y fecha.
-- Por cada ítem, un APU con sus líneas: tipo, código de insumo, cantidad o rendimiento por unidad de partida, % de pérdida y nota de origen.
-- Si una partida se cotiza completa, usar el P.U. directo en la partida, con su origen.
+- **Antes de partir de cero, buscar cuadros de precios anteriores de JMS** (SharePoint o adjuntos) y convertirlos con:
+  ```bash
+  python3 .claude/skills/tecnica-estimacion-inversion/scripts/extraer_cdp.py cuadro_anterior.xlsx trabajo/<proyecto>/base_cdp.json
+  ```
+  Reutilizar APU de ítems iguales o parecidos y su base de materiales y tarifas, **actualizando precios y fechas**.
+- Un bloque APU por ítem con MATERIALES, MANO DE OBRA (HD, costo $/HD de la tabla de tarifas, LS %) y MAQ. Y EQUIPOS (costo, vida útil). Las cantidades son totales del ítem, escritas como fórmula (personas × días); el rendimiento se calcula solo.
+- Precios en la base MATERIALES (con proveedor y fecha) y tarifas en «Mano de obra». Si una partida se cotiza completa, usar el P. Unit. directo con su origen.
 - Nunca inventar precios ni rendimientos. Lo que falte se deja pendiente o se marca REFERENCIAL con su fuente.
 
 ### 5. Valor de la UF y recargos
 
 - UF del día desde el SII o el Banco Central, con fecha y fuente. Si no hay acceso a la web, pedirla al usuario.
-- Recargos: gastos generales, utilidades, contingencia (según nivel de definición, `references/metodologia.md`), honorarios e IVA (19 %). Leyes sociales y herramientas menores para los APU.
+- Recargos del cuadro: gastos generales y utilidades sobre el costo directo (en el CDP-001: 25 % y 12 %), imprevistos si corresponde, IVA 19 %. Leyes sociales para la mano de obra (28 % en el CDP-001). Confirmar para cada proyecto.
 
-### 6. Generar la planilla
+### 6. Generar el cuadro de precios
 
-1. Escribir el JSON de entrada con el formato de `assets/ejemplo_entrada.json`: `partidas`, `cubicacion`, `insumos`, `apu`, además de los parámetros. Guardarlo en `trabajo/<proyecto>/`.
+1. Escribir el JSON de entrada con el formato de `assets/ejemplo_entrada.json`: datos del proyecto, `partidas` (con capítulo y subcapítulo), `cubicacion`, `materiales`, `mano_obra`, `apu`, `referencias`.
 2. Ejecutar:
    ```bash
    python3 .claude/skills/tecnica-estimacion-inversion/scripts/generar_planilla.py entrada.json salida.xlsx
    ```
 3. Recalcular (si existe la skill `xlsx`, con su `recalc.py`) y confirmar cero errores de fórmula.
-4. Revisar a mano al menos tres ítems: una cantidad de la cubicación, un P.U. de su APU y su total.
+4. Revisar a mano al menos tres ítems: una cantidad de la cubicación, un P. Unit. de su APU y su total.
 
 | Hoja | Contenido |
 |---|---|
-| Parámetros | UF editable, recargos, leyes sociales, herramientas menores, superficie total |
-| Resumen | Costo directo por capítulo, % de cada uno, recargos, IVA, total, UF/m² y contraste con la estimación paramétrica |
-| Partidas | Itemizado: cantidad (desde Cubicación), P.U. (desde su APU), total UF y CLP, % y referencia de ET |
+| Parámetros | UF editable, GG, utilidades, imprevistos, IVA, leyes sociales, superficie |
+| CDP | Cuadro de precios JMS: encabezado, ítems por capítulo y subcapítulo, P. Unit. y Total en $ y UF, subtotales, CD, GG, utilidades, neto, IVA, bruto, observaciones |
+| Resumen | Directo por capítulo, %, $/m², UF/m², recargos y rango ±20 % |
 | Cubicación | Memoria de cálculo por ítem, con plano de origen y supuestos |
-| Insumos | Precios de materiales, mano de obra, equipos y subcontratos, en UF o CLP, con fuente |
-| APU <ítem> | Una hoja por partida con su análisis de precio unitario |
-| Estimación m², Comparación materiales, Tabla MINVU | Estimación paramétrica por superficie y material, para contrastar |
-| Sensibilidad UF | Total en pesos para distintos valores de UF |
-| Notas | Documentos base, fuentes, supuestos y exclusiones |
+| APU (capítulo) | Un bloque por ítem: materiales, mano de obra y equipos |
+| MATERIALES, Mano de obra | Bases de precios y tarifas |
+| Estimación m², Comparación materiales, Tabla MINVU | Contraste paramétrico por superficie y material |
+| Sensibilidad UF, Referencias, Notas | Total en pesos para otras UF, fuentes de precios, supuestos y exclusiones |
 
 ### 7. Estimación paramétrica (sin planos o para contrastar)
 

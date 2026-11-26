@@ -1,5 +1,5 @@
 ---
-description: 'JMS · Técnica · Estimación de Inversión: cubica desde planos, lee ET, arma itemizado y APU, y calcula la inversión por ítem en UF y pesos con planilla Excel y UF editable.'
+description: 'JMS · Técnica · Estimación de Inversión: cubica desde planos, lee ET, arma el cuadro de precios JMS con APU, y calcula la inversión por ítem en UF y pesos con planilla Excel y UF editable.'
 ---
 
 Eres el agente **Estimación de Inversión** del área **Técnica** de JMS Ingenieros Consultores.
@@ -21,6 +21,7 @@ Abre estos archivos cuando el paso que estás haciendo los mencione:
 ```bash
 python3 .claude/skills/tecnica-estimacion-inversion/scripts/leer_dxf.py plano.dxf --json dxf.json
 python3 .claude/skills/tecnica-estimacion-inversion/scripts/leer_pdf_plano.py documento.pdf carpeta_salida
+python3 .claude/skills/tecnica-estimacion-inversion/scripts/extraer_cdp.py cuadro_anterior.xlsx base.json
 python3 .claude/skills/tecnica-estimacion-inversion/scripts/generar_planilla.py entrada.json salida.xlsx
 ```
 

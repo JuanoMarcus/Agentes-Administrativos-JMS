@@ -1,87 +1,673 @@
 {
-  "proyecto": "EJEMPLO — Galpón de bodega 20 × 30 m",
-  "mandante": "[Mandante]",
-  "ubicacion": "Concepción, Región del Biobío",
-  "documentos_base": "EJEMPLO: planos E-01 Rev B (fundaciones), E-02 Rev B (estructura), A-01 Rev A (planta); ET Rev A",
-  "uf": 41412.34,
-  "fecha_uf": "26-11-2026",
-  "fuente_uf": "SII, valor UF 26-11-2026 ($41.412,34), sii.cl/valores_y_fechas/uf/uf2026.htm",
-  "factor_regional": 1.0,
-  "factor_mercado": 1.0,
-  "gastos_generales": 0.0,
-  "utilidades": 0.0,
-  "contingencia": 0.10,
-  "honorarios": 0.0,
-  "iva": 0.19,
-  "leyes_sociales": 0.0,
-  "herramientas_menores": 0.0,
-  "superficie_total": 600,
-  "recintos": [
-    {"descripcion": "Galpón de bodega (estructura y cubierta de acero)", "superficie": 600, "clase": "AA", "categoria": "b"}
-  ],
-  "comparar": {"superficie": 600, "categoria": "3", "categoria_galpon": "b"},
-  "partidas": [
-    {"item": "1.1", "capitulo": "1. Obras provisorias", "descripcion": "Instalación de faenas", "unidad": "gl", "cantidad": 1, "pu_uf": 150, "origen_pu": "EJEMPLO — reemplazar por cotización", "et": "ET 1.1"},
-    {"item": "2.1", "capitulo": "2. Movimiento de tierras", "descripcion": "Excavación de fundaciones a máquina", "unidad": "m3", "et": "ET 2.1"},
-    {"item": "3.1", "capitulo": "3. Fundaciones", "descripcion": "Emplantillado H-5 e = 5 cm", "unidad": "m3", "et": "ET 3.1"},
-    {"item": "3.2", "capitulo": "3. Fundaciones", "descripcion": "Hormigón H-25 en zapatas y pedestales", "unidad": "m3", "et": "ET 3.2: H-25 (G25) 90 % NC, docilidad 10 cm"},
-    {"item": "3.3", "capitulo": "3. Fundaciones", "descripcion": "Acero de refuerzo A630-420H", "unidad": "kg", "et": "ET 3.3"},
-    {"item": "3.4", "capitulo": "3. Fundaciones", "descripcion": "Moldaje de zapatas y pedestales", "unidad": "m2", "et": "ET 3.4"},
-    {"item": "4.1", "capitulo": "4. Pavimentos", "descripcion": "Radier H-25 e = 12 cm con malla", "unidad": "m2", "et": "ET 4.1"},
-    {"item": "5.1", "capitulo": "5. Estructura metálica", "descripcion": "Acero estructural A270ES: suministro, fabricación, pintura y montaje", "unidad": "kg", "cantidad": 18000, "origen_cantidad": "EJEMPLO — lista de materiales plano E-02", "pu_uf": 0.09, "origen_pu": "EJEMPLO — reemplazar por cotización", "et": "ET 5.1"},
-    {"item": "6.1", "capitulo": "6. Cubierta", "descripcion": "Cubierta de acero prepintado e = 0,5 mm con fijaciones", "unidad": "m2", "pu_uf": 0.55, "origen_pu": "EJEMPLO — reemplazar por cotización", "et": "ET 6.1"}
-  ],
-  "cubicacion": [
-    {"item": "2.1", "elemento": "Zapatas Z1 (ejes A y D, 1 a 6)", "plano": "E-01 Rev B", "veces": 12, "largo": 1.5, "ancho": 1.5, "alto": 1.2, "obs": "Sin sobreexcavación: agregar según ET"},
-    {"item": "3.1", "elemento": "Emplantillado bajo Z1", "plano": "E-01 Rev B", "veces": 12, "largo": 1.5, "ancho": 1.5, "alto": 0.05},
-    {"item": "3.2", "elemento": "Zapatas Z1", "plano": "E-01 Rev B", "veces": 12, "largo": 1.5, "ancho": 1.5, "alto": 0.6},
-    {"item": "3.2", "elemento": "Pedestales P1", "plano": "E-01 Rev B", "veces": 12, "largo": 0.5, "ancho": 0.5, "alto": 0.8},
-    {"item": "3.3", "elemento": "Armadura zapatas y pedestales", "plano": "E-01 Rev B", "cantidad": 1120, "obs": "SUPUESTO EJEMPLO: cuantía 60 kg/m³ × 18,6 m³ hasta tener planilla de armaduras"},
-    {"item": "3.4", "elemento": "Moldaje caras laterales zapatas", "plano": "E-01 Rev B", "veces": 48, "largo": 1.5, "alto": 0.6},
-    {"item": "3.4", "elemento": "Moldaje caras pedestales", "plano": "E-01 Rev B", "veces": 48, "largo": 0.5, "alto": 0.8},
-    {"item": "4.1", "elemento": "Radier interior", "plano": "A-01 Rev A", "veces": 1, "largo": 30, "ancho": 20},
-    {"item": "6.1", "elemento": "Cubierta dos aguas (pendiente 15 %, factor 1,011)", "plano": "E-02 Rev B", "veces": 2, "largo": 31, "ancho": 10.6, "obs": "Incluye alero 0,5 m por lado; traslapos en el APU o en el precio"}
-  ],
-  "insumos": [
-    {"codigo": "MAT-001", "descripcion": "Hormigón premezclado H-25 (G25)", "unidad": "m3", "tipo": "Material", "precio": 2.9, "moneda": "UF", "fuente": "EJEMPLO — reemplazar por cotización"},
-    {"codigo": "MAT-002", "descripcion": "Hormigón premezclado H-5", "unidad": "m3", "tipo": "Material", "precio": 2.1, "moneda": "UF", "fuente": "EJEMPLO — reemplazar por cotización"},
-    {"codigo": "MAT-003", "descripcion": "Acero A630-420H en barras, cortado y doblado", "unidad": "kg", "tipo": "Material", "precio": 1100, "moneda": "CLP", "fuente": "EJEMPLO — reemplazar por cotización"},
-    {"codigo": "MAT-004", "descripcion": "Placa terciada moldaje 18 mm (prorrateada por usos)", "unidad": "m2", "tipo": "Material", "precio": 4500, "moneda": "CLP", "fuente": "EJEMPLO — reemplazar por cotización"},
-    {"codigo": "MAT-005", "descripcion": "Malla electrosoldada C-139", "unidad": "m2", "tipo": "Material", "precio": 3200, "moneda": "CLP", "fuente": "EJEMPLO — reemplazar por cotización"},
-    {"codigo": "MO-001", "descripcion": "Jornal (cuadrilla hormigonado)", "unidad": "HH", "tipo": "Mano de obra", "precio": 7000, "moneda": "CLP", "fuente": "EJEMPLO — reemplazar por tarifa vigente"},
-    {"codigo": "MO-002", "descripcion": "Carpintero de moldajes", "unidad": "HH", "tipo": "Mano de obra", "precio": 8500, "moneda": "CLP", "fuente": "EJEMPLO — reemplazar por tarifa vigente"},
-    {"codigo": "MO-003", "descripcion": "Enfierrador", "unidad": "HH", "tipo": "Mano de obra", "precio": 8500, "moneda": "CLP", "fuente": "EJEMPLO — reemplazar por tarifa vigente"},
-    {"codigo": "EQ-001", "descripcion": "Vibrador de inmersión", "unidad": "hr", "tipo": "Equipo", "precio": 2500, "moneda": "CLP", "fuente": "EJEMPLO — reemplazar por cotización"},
-    {"codigo": "EQ-002", "descripcion": "Retroexcavadora con operador", "unidad": "hr", "tipo": "Equipo", "precio": 1.0, "moneda": "UF", "fuente": "EJEMPLO — reemplazar por cotización"}
-  ],
-  "apu": {
-    "2.1": [
-      {"tipo": "Equipo", "codigo": "EQ-002", "cantidad": 0.06, "nota": "EJEMPLO: rendimiento 16 m³/hr"},
-      {"tipo": "Mano de obra", "codigo": "MO-001", "cantidad": 0.10, "nota": "EJEMPLO: perfilado manual"}
-    ],
-    "3.1": [
-      {"tipo": "Material", "codigo": "MAT-002", "cantidad": 1.0, "perdida": 0.05},
-      {"tipo": "Mano de obra", "codigo": "MO-001", "cantidad": 1.5, "nota": "EJEMPLO"}
-    ],
-    "3.2": [
-      {"tipo": "Material", "codigo": "MAT-001", "cantidad": 1.0, "perdida": 0.03},
-      {"tipo": "Mano de obra", "codigo": "MO-001", "cantidad": 1.2, "nota": "EJEMPLO: cuadrilla de hormigonado"},
-      {"tipo": "Equipo", "codigo": "EQ-001", "cantidad": 0.25, "nota": "EJEMPLO"}
-    ],
-    "3.3": [
-      {"tipo": "Material", "codigo": "MAT-003", "cantidad": 1.0, "perdida": 0.05, "nota": "Pérdida por despuntes y traslapos"},
-      {"tipo": "Mano de obra", "codigo": "MO-003", "cantidad": 0.03, "nota": "EJEMPLO: 33 kg/HH"}
-    ],
-    "3.4": [
-      {"tipo": "Material", "codigo": "MAT-004", "cantidad": 1.0, "perdida": 0.10},
-      {"tipo": "Mano de obra", "codigo": "MO-002", "cantidad": 0.8, "nota": "EJEMPLO"}
-    ],
-    "4.1": [
-      {"tipo": "Material", "codigo": "MAT-001", "cantidad": 0.12, "perdida": 0.05, "nota": "Espesor 12 cm"},
-      {"tipo": "Material", "codigo": "MAT-005", "cantidad": 1.0, "perdida": 0.10, "nota": "Traslapos"},
-      {"tipo": "Mano de obra", "codigo": "MO-001", "cantidad": 0.25, "nota": "EJEMPLO"},
-      {"tipo": "Equipo", "codigo": "EQ-001", "cantidad": 0.02, "nota": "EJEMPLO"}
-    ]
+ "codigo": "CDP-EJEMPLO",
+ "fecha": "2026-11-26",
+ "revision": "v_001",
+ "proyecto": "EJEMPLO — Galpón de bodega 20 × 30 m",
+ "mandante": "[Mandante]",
+ "direccion": "[Dirección]",
+ "email": "[correo]",
+ "contacto": "[teléfono]",
+ "documentos_base": "EJEMPLO: planos E-01 Rev B (fundaciones), E-02 Rev B (estructura), A-01 Rev A (planta); ET Rev A",
+ "superficie_total": 600,
+ "uf": 41412.34,
+ "fecha_uf": "26-11-2026",
+ "fuente_uf": "SII, valor UF 26-11-2026 ($41.412,34), sii.cl/valores_y_fechas/uf/uf2026.htm",
+ "gastos_generales": 0.25,
+ "utilidades": 0.12,
+ "contingencia": 0.0,
+ "iva": 0.19,
+ "leyes_sociales": 0.28,
+ "nota_gg": "Valor usado por JMS en CDP-001 Of. Proyectos CMPC Santa Fe (2023). Confirmar para cada proyecto",
+ "nota_ut": "Valor usado por JMS en CDP-001 Of. Proyectos CMPC Santa Fe (2023). Confirmar para cada proyecto",
+ "nota_ls": "28 %, valor usado en los APU del CDP-001 CMPC Santa Fe (2023). Confirmar vigencia",
+ "fuente_mano_obra": "EJEMPLO: tarifas mensuales de costo empresa; costo día = mes / 30 (criterio CDP-001 CMPC Santa Fe). Actualizar.",
+ "recintos": [
+  {
+   "descripcion": "Galpón de bodega (estructura y cubierta de acero)",
+   "superficie": 600,
+   "clase": "AA",
+   "categoria": "b"
+  }
+ ],
+ "comparar": {
+  "superficie": 600,
+  "categoria": "3",
+  "categoria_galpon": "b"
+ },
+ "partidas": [
+  {
+   "item": "1.1",
+   "capitulo": "1.0 INSTALACIÓN DE FAENA Y OBRAS PREVIAS",
+   "descripcion": "Oficina, bodega y pañol (contenedores)",
+   "unidad": "gl",
+   "cantidad": 1,
+   "et": "ET 1.1"
   },
-  "notas": ["EJEMPLO con datos ficticios para mostrar el formato. Precios, rendimientos y cantidades marcados EJEMPLO no deben usarse."]
+  {
+   "item": "1.2",
+   "capitulo": "1.0 INSTALACIÓN DE FAENA Y OBRAS PREVIAS",
+   "descripcion": "Trazados y niveles",
+   "unidad": "m2",
+   "et": "ET 1.2"
+  },
+  {
+   "item": "2.1.1",
+   "capitulo": "2.0 OBRA GRUESA",
+   "subcapitulo": "2.1 FUNDACIONES",
+   "descripcion": "Excavación de fundaciones",
+   "unidad": "m3",
+   "et": "ET 2.1"
+  },
+  {
+   "item": "2.1.2",
+   "capitulo": "2.0 OBRA GRUESA",
+   "subcapitulo": "2.1 FUNDACIONES",
+   "descripcion": "Emplantillado H-5 e = 5 cm",
+   "unidad": "m3",
+   "et": "ET 2.2"
+  },
+  {
+   "item": "2.1.3",
+   "capitulo": "2.0 OBRA GRUESA",
+   "subcapitulo": "2.1 FUNDACIONES",
+   "descripcion": "Moldaje de fundaciones (incluye descimbre)",
+   "unidad": "m2",
+   "et": "ET 2.3"
+  },
+  {
+   "item": "2.1.4",
+   "capitulo": "2.0 OBRA GRUESA",
+   "subcapitulo": "2.1 FUNDACIONES",
+   "descripcion": "Armadura de fundaciones A630-420H",
+   "unidad": "kg",
+   "et": "ET 2.4"
+  },
+  {
+   "item": "2.1.5",
+   "capitulo": "2.0 OBRA GRUESA",
+   "subcapitulo": "2.1 FUNDACIONES",
+   "descripcion": "Hormigón de fundaciones H-25",
+   "unidad": "m3",
+   "et": "ET 2.5: H-25 (G25) 90 % NC"
+  },
+  {
+   "item": "2.2.1",
+   "capitulo": "2.0 OBRA GRUESA",
+   "subcapitulo": "2.2 RADIER",
+   "descripcion": "Radier H-25 e = 12 cm con malla C-139",
+   "unidad": "m2",
+   "et": "ET 2.6"
+  },
+  {
+   "item": "2.3.1",
+   "capitulo": "2.0 OBRA GRUESA",
+   "subcapitulo": "2.3 ESTRUCTURA Y CUBIERTA",
+   "descripcion": "Estructura metálica A270ES suministrada, pintada y montada",
+   "unidad": "kg",
+   "cantidad": 18000,
+   "origen_cantidad": "EJEMPLO — lista de materiales E-02",
+   "pu": 3700,
+   "origen_pu": "EJEMPLO — reemplazar por cotización de maestranza",
+   "et": "ET 2.7"
+  },
+  {
+   "item": "2.3.2",
+   "capitulo": "2.0 OBRA GRUESA",
+   "subcapitulo": "2.3 ESTRUCTURA Y CUBIERTA",
+   "descripcion": "Cubierta de acero prepintado e = 0,5 mm con fijaciones",
+   "unidad": "m2",
+   "et": "ET 2.8"
+  },
+  {
+   "item": "3.1",
+   "capitulo": "3.0 OBRAS EXTERIORES",
+   "descripcion": "Aprobación ambiental",
+   "unidad": "gl",
+   "cantidad": 1,
+   "por_mandante": "Mandante"
+  }
+ ],
+ "cubicacion": [
+  {
+   "item": "1.2",
+   "elemento": "Superficie del galpón",
+   "plano": "A-01 Rev A",
+   "veces": 1,
+   "largo": 30,
+   "ancho": 20
+  },
+  {
+   "item": "2.1.1",
+   "elemento": "Zapatas Z1 (ejes A y D, 1 a 6)",
+   "plano": "E-01 Rev B",
+   "veces": 12,
+   "largo": 1.5,
+   "ancho": 1.5,
+   "alto": 1.2,
+   "obs": "Sin sobreexcavación: agregar según ET"
+  },
+  {
+   "item": "2.1.2",
+   "elemento": "Emplantillado bajo Z1",
+   "plano": "E-01 Rev B",
+   "veces": 12,
+   "largo": 1.5,
+   "ancho": 1.5,
+   "alto": 0.05
+  },
+  {
+   "item": "2.1.3",
+   "elemento": "Moldaje caras laterales zapatas",
+   "plano": "E-01 Rev B",
+   "veces": 48,
+   "largo": 1.5,
+   "alto": 0.6
+  },
+  {
+   "item": "2.1.3",
+   "elemento": "Moldaje caras pedestales",
+   "plano": "E-01 Rev B",
+   "veces": 48,
+   "largo": 0.5,
+   "alto": 0.8
+  },
+  {
+   "item": "2.1.4",
+   "elemento": "Armadura zapatas y pedestales",
+   "plano": "E-01 Rev B",
+   "cantidad": 1120,
+   "obs": "SUPUESTO EJEMPLO: cuantía 60 kg/m³ × 18,6 m³ hasta tener planilla de armaduras"
+  },
+  {
+   "item": "2.1.5",
+   "elemento": "Zapatas Z1",
+   "plano": "E-01 Rev B",
+   "veces": 12,
+   "largo": 1.5,
+   "ancho": 1.5,
+   "alto": 0.6
+  },
+  {
+   "item": "2.1.5",
+   "elemento": "Pedestales P1",
+   "plano": "E-01 Rev B",
+   "veces": 12,
+   "largo": 0.5,
+   "ancho": 0.5,
+   "alto": 0.8
+  },
+  {
+   "item": "2.2.1",
+   "elemento": "Radier interior",
+   "plano": "A-01 Rev A",
+   "veces": 1,
+   "largo": 30,
+   "ancho": 20
+  },
+  {
+   "item": "2.3.2",
+   "elemento": "Cubierta dos aguas (pendiente 15 %)",
+   "plano": "E-02 Rev B",
+   "veces": 2,
+   "largo": 31,
+   "ancho": 10.6,
+   "obs": "Incluye alero 0,5 m por lado"
+  }
+ ],
+ "materiales": [
+  {
+   "categoria": "HORMIGÓN",
+   "prefijo": "hor.",
+   "correlativo": 1000,
+   "descripcion": "Hormigón premezclado H-25 (G25)",
+   "unidad": "m3",
+   "precio": 120000,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "HORMIGÓN",
+   "prefijo": "hor.",
+   "correlativo": 1001,
+   "descripcion": "Hormigón premezclado H-5",
+   "unidad": "m3",
+   "precio": 85000,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "ACERO",
+   "prefijo": "ace.",
+   "correlativo": 1000,
+   "descripcion": "Acero A630-420H cortado y doblado",
+   "unidad": "kg",
+   "precio": 1100,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "ACERO",
+   "prefijo": "ace.",
+   "correlativo": 1001,
+   "descripcion": "Malla electrosoldada C-139 (2,6 × 5 m)",
+   "unidad": "un",
+   "precio": 41600,
+   "rdto": "13 m2/un",
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "ACERO",
+   "prefijo": "ace.",
+   "correlativo": 1002,
+   "descripcion": "Alambre negro #18",
+   "unidad": "kg",
+   "precio": 6980,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "MADERA",
+   "prefijo": "mad.",
+   "correlativo": 1000,
+   "descripcion": "Tablero terciado 15 mm moldaje (1,2 × 2,4)",
+   "unidad": "pl",
+   "precio": 39990,
+   "rdto": "2,88 m2/pl",
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "MADERA",
+   "prefijo": "mad.",
+   "correlativo": 1001,
+   "descripcion": "Pino 2 × 3\" dimensionado 3,2 m",
+   "unidad": "pz",
+   "precio": 2750,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "CUBIERTA",
+   "prefijo": "cub.",
+   "correlativo": 1000,
+   "descripcion": "Plancha acero prepintado 0,5 mm (m2 útil)",
+   "unidad": "m2",
+   "precio": 9800,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "CUBIERTA",
+   "prefijo": "cub.",
+   "correlativo": 1001,
+   "descripcion": "Tornillo techo autoperforante 12 × 2\" (100 un)",
+   "unidad": "caja",
+   "precio": 14000,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "OBRA PROVISORIA",
+   "prefijo": "pro.",
+   "correlativo": 1000,
+   "descripcion": "Contenedor oficina (arriendo)",
+   "unidad": "mes",
+   "precio": 280000,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "EQUIPOS",
+   "prefijo": "equ.",
+   "correlativo": 1000,
+   "descripcion": "Retroexcavadora con operador",
+   "unidad": "día",
+   "precio": 200000,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "EQUIPOS",
+   "prefijo": "equ.",
+   "correlativo": 1001,
+   "descripcion": "Vibrador de inmersión",
+   "unidad": "día",
+   "precio": 18000,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "EQUIPOS",
+   "prefijo": "equ.",
+   "correlativo": 1002,
+   "descripcion": "Camión pluma (4 t)",
+   "unidad": "día",
+   "precio": 220000,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "HERRAMIENTAS",
+   "prefijo": "her.",
+   "correlativo": 1000,
+   "descripcion": "Sierra circular",
+   "unidad": "cu",
+   "precio": 75000,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  },
+  {
+   "categoria": "HERRAMIENTAS",
+   "prefijo": "her.",
+   "correlativo": 1001,
+   "descripcion": "Nivel láser",
+   "unidad": "cu",
+   "precio": 250000,
+   "proveedor": "EJEMPLO",
+   "fecha": "EJEMPLO — reemplazar"
+  }
+ ],
+ "mano_obra": [
+  {
+   "especialidad": "Supervisor",
+   "liquido_mes": 900000,
+   "costo_mes": 2500000,
+   "fuente": "EJEMPLO — actualizar"
+  },
+  {
+   "especialidad": "Topógrafo",
+   "liquido_mes": 1200000,
+   "costo_mes": 1500000,
+   "fuente": "EJEMPLO — actualizar"
+  },
+  {
+   "especialidad": "Capataz",
+   "liquido_mes": 750000,
+   "costo_mes": 900000,
+   "fuente": "EJEMPLO — actualizar"
+  },
+  {
+   "especialidad": "Maestro 1ra",
+   "liquido_mes": 700000,
+   "costo_mes": 900000,
+   "fuente": "EJEMPLO — actualizar"
+  },
+  {
+   "especialidad": "Maestro 2da",
+   "liquido_mes": 650000,
+   "costo_mes": 750000,
+   "fuente": "EJEMPLO — actualizar"
+  },
+  {
+   "especialidad": "Ayudante",
+   "liquido_mes": 550000,
+   "costo_mes": 600000,
+   "fuente": "EJEMPLO — actualizar"
+  },
+  {
+   "especialidad": "Jornal",
+   "liquido_mes": 480000,
+   "costo_mes": 500000,
+   "fuente": "EJEMPLO — actualizar"
+  }
+ ],
+ "apu": {
+  "1.1": {
+   "materiales": [
+    {
+     "codigo": "pro.1000",
+     "cantidad": "=2*4",
+     "perdida": 0
+    }
+   ],
+   "equipos": [
+    {
+     "codigo": "equ.1002",
+     "cantidad": "=2*2",
+     "vida_util": 1
+    }
+   ]
+  },
+  "1.2": {
+   "materiales": [
+    {
+     "codigo": "mad.1001",
+     "cantidad": "=0.225*600",
+     "perdida": 0.05
+    }
+   ],
+   "mano_obra": [
+    {
+     "especialidad": "Topógrafo",
+     "cantidad": "=1*3"
+    },
+    {
+     "especialidad": "Maestro 2da",
+     "cantidad": "=2*3"
+    },
+    {
+     "especialidad": "Ayudante",
+     "cantidad": "=2*3"
+    }
+   ],
+   "equipos": [
+    {
+     "codigo": "her.1001",
+     "cantidad": "=1*3",
+     "vida_util": 365
+    }
+   ]
+  },
+  "2.1.1": {
+   "mano_obra": [
+    {
+     "especialidad": "Jornal",
+     "cantidad": "=2*3"
+    }
+   ],
+   "equipos": [
+    {
+     "codigo": "equ.1000",
+     "cantidad": "=1*2",
+     "vida_util": 1
+    }
+   ]
+  },
+  "2.1.2": {
+   "materiales": [
+    {
+     "codigo": "hor.1001",
+     "cantidad": "=1.35",
+     "perdida": 0.05
+    }
+   ],
+   "mano_obra": [
+    {
+     "especialidad": "Maestro 2da",
+     "cantidad": "=1*1"
+    },
+    {
+     "especialidad": "Jornal",
+     "cantidad": "=2*1"
+    }
+   ]
+  },
+  "2.1.3": {
+   "materiales": [
+    {
+     "codigo": "mad.1000",
+     "cantidad": "=62.4/2.88/3",
+     "perdida": 0.1
+    },
+    {
+     "codigo": "mad.1001",
+     "cantidad": "=62.4*0.8/3",
+     "perdida": 0.1
+    }
+   ],
+   "mano_obra": [
+    {
+     "especialidad": "Maestro 1ra",
+     "cantidad": "=2*4"
+    },
+    {
+     "especialidad": "Ayudante",
+     "cantidad": "=2*4"
+    }
+   ],
+   "equipos": [
+    {
+     "codigo": "her.1000",
+     "cantidad": "=2*4",
+     "vida_util": 365
+    }
+   ]
+  },
+  "2.1.4": {
+   "materiales": [
+    {
+     "codigo": "ace.1000",
+     "cantidad": "=1120",
+     "perdida": 0.05
+    },
+    {
+     "codigo": "ace.1002",
+     "cantidad": "=1120*0.01",
+     "perdida": 0.05
+    }
+   ],
+   "mano_obra": [
+    {
+     "especialidad": "Maestro 1ra",
+     "cantidad": "=2*3"
+    },
+    {
+     "especialidad": "Ayudante",
+     "cantidad": "=2*3"
+    }
+   ]
+  },
+  "2.1.5": {
+   "materiales": [
+    {
+     "codigo": "hor.1000",
+     "cantidad": "=18.6",
+     "perdida": 0.03
+    }
+   ],
+   "mano_obra": [
+    {
+     "especialidad": "Maestro 1ra",
+     "cantidad": "=1*2"
+    },
+    {
+     "especialidad": "Jornal",
+     "cantidad": "=4*2"
+    }
+   ],
+   "equipos": [
+    {
+     "codigo": "equ.1001",
+     "cantidad": "=1*2",
+     "vida_util": 1
+    }
+   ]
+  },
+  "2.2.1": {
+   "materiales": [
+    {
+     "codigo": "hor.1000",
+     "cantidad": "=600*0.12",
+     "perdida": 0.05
+    },
+    {
+     "codigo": "ace.1001",
+     "cantidad": "=600/13",
+     "perdida": 0.1
+    }
+   ],
+   "mano_obra": [
+    {
+     "especialidad": "Maestro 1ra",
+     "cantidad": "=2*4"
+    },
+    {
+     "especialidad": "Jornal",
+     "cantidad": "=6*4"
+    }
+   ],
+   "equipos": [
+    {
+     "codigo": "equ.1001",
+     "cantidad": "=2*4",
+     "vida_util": 1
+    }
+   ]
+  },
+  "2.3.2": {
+   "materiales": [
+    {
+     "codigo": "cub.1000",
+     "cantidad": "=657.2",
+     "perdida": 0.08
+    },
+    {
+     "codigo": "cub.1001",
+     "cantidad": "=657.2*6/100",
+     "perdida": 0.05
+    }
+   ],
+   "mano_obra": [
+    {
+     "especialidad": "Maestro 1ra",
+     "cantidad": "=2*6"
+    },
+    {
+     "especialidad": "Ayudante",
+     "cantidad": "=2*6"
+    }
+   ],
+   "equipos": [
+    {
+     "codigo": "equ.1002",
+     "cantidad": "=1*2",
+     "vida_util": 1
+    }
+   ]
+  }
+ },
+ "observaciones": [
+  "EJEMPLO con datos ficticios para mostrar el formato. Precios, tarifas, rendimientos y cantidades marcados EJEMPLO no deben usarse.",
+  "Valores netos; el IVA se agrega al final."
+ ],
+ "referencias": [
+  {
+   "nombre": "ONDAC (APU y rendimientos)",
+   "url": "https://portal.ondac.com/601/w3-propertyvalue"
+  },
+  {
+   "nombre": "Sodimac (materiales)",
+   "url": "https://sodimac.falabella.com/sodimac-cl"
+  },
+  {
+   "nombre": "Easy (materiales)",
+   "url": "https://www.easy.cl/"
+  },
+  {
+   "nombre": "Multiaceros (aceros)",
+   "url": "https://www.multiaceros.cl/tienda/index.aspx"
+  },
+  {
+   "nombre": "Cintac (aceros)",
+   "url": "https://tienda.cintac.cl/"
+  },
+  {
+   "nombre": "SII (valor UF)",
+   "url": "https://www.sii.cl/valores_y_fechas/uf/uf2026.htm"
+  }
+ ],
+ "notas": [
+  "EJEMPLO con datos ficticios."
+ ]
 }

@@ -1,42 +1,47 @@
-# Análisis de precios unitarios (APU)
+# Análisis de precios unitarios (APU) — formato JMS
 
-## Estructura de cada hoja APU
+Formato tomado del Cuadro de Precios CDP-001 «Of. Proyectos CMPC Santa Fe» (JMS, 2023). El generador lo replica y agrega columnas en UF.
 
-Una hoja por partida ("APU 3.2"). Cada línea indica tipo, código del insumo, cantidad o rendimiento por unidad de partida y % de pérdida. La descripción, la unidad y el precio se traen de la hoja **Insumos**.
+## Bloque APU por ítem
+
+Una hoja por capítulo, por ejemplo «APU (2.1-2.12)», con un bloque por ítem:
 
 ```
-Costo directo unitario = Materiales × (1 + pérdida)
-                       + Mano de obra × (1 + leyes sociales + herramientas menores)
-                       + Equipos
-                       + Subcontratos
+Ítem            2.3   Excavaciones de fundaciones                (vínculo al CDP)
+Cantidad Ppto.  627,6  m3     Pre. Unit. ($) = Σ subtotales      Total Neto ($) = P.U. × cantidad
+                              Pre. Unit. (UF)                    Total Neto (UF)
+
+MATERIALES          Unidad  Cantidad  Rendto. = Cantidad / Cant. Ppto.  Pérdida %  Precio $/un  Subtotal = Rendto × (1 + pérdida) × Precio
+MANO DE OBRA        HD      Cantidad (HD)  Rendto. (HD/unid.)  Costo $/HD  LS %  Subtotal = Rendto × Costo × (1 + LS)
+MAQ. Y EQUIPOS      Unidad  Cantidad  Rendto. (d/unid.)  Costo $  Vida útil (d)  Subtotal = Rendto × Costo / Vida útil
 ```
 
-Leyes sociales y herramientas menores son porcentajes únicos en la hoja Parámetros (C16 y C17): definirlos con los valores vigentes que use JMS.
+- **Las cantidades del APU son totales del ítem** (por ejemplo, «=2*5» = 2 personas × 5 días). El rendimiento por unidad sale de dividir por la cantidad del cuadro de precios. Escribir la cantidad como fórmula aritmética (personas × días, unidades × meses) para que se entienda el supuesto.
+- **Mano de obra:** costo $/HD = costo mensual de la especialidad / 30, desde la hoja «Mano de obra». Leyes sociales: 28 % en el CDP-001 (parámetro único en la hoja Parámetros).
+- **Equipos:** vida útil 1 = arriendo por día (el costo es el valor diario); vida útil 365 = herramienta propia (el costo es el valor de compra, que se prorratea por día de uso).
+- **Partidas globales (gl)** con cantidad 1: el APU suma directamente los recursos del ítem (por ejemplo, 14 meses de contenedor + 6 días de camión pluma).
 
-## Cantidades y rendimientos
+## Bases de precios
 
-| Tipo | Cantidad por unidad de partida | Ejemplo de cómo se obtiene |
-|---|---|---|
-| Material | Consumo geométrico del material | Radier e = 12 cm → 0,12 m³ de hormigón por m² |
-| Mano de obra | HH por unidad = 1 / rendimiento | Cuadrilla que hace 20 m²/día de 8 h con 2 personas → 16 HH / 20 m² = 0,8 HH/m² |
-| Equipo | Horas o días de equipo por unidad | Retroexcavadora de 16 m³/hr → 0,0625 hr/m³ |
-| Subcontrato | 1 unidad, a precio del subcontratista | Pintura intumescente a precio cotizado por m² |
+- **MATERIALES:** categoría, código (hor., mad., fij., rev., ace., equ., her.), correlativo, descripción, unidad, precio $, rendimiento o nota, proveedor y fecha. Clave = código + correlativo (ej.: «hor.1004»). Una línea de APU con código toma descripción, unidad y precio de esta base.
+- **Mano de obra:** especialidad, $/mes líquido, $/mes costo, $/día.
+- **Referencias:** fuentes usadas por JMS: ONDAC (APU y rendimientos), Sodimac, Easy, Rental Essentials (arriendo de equipos), Multiaceros, Cintac, OAP (aceros), Zigma (cañerías), Topex (adhesivos).
+- Precios netos, sin IVA, con **fuente y fecha**. Nunca inventar precios: si falta uno, dejarlo pendiente o marcarlo REFERENCIAL con su fuente.
 
-Fuentes de rendimientos, en este orden: (1) datos reales de obras de JMS o del cliente, (2) cotizaciones de subcontratistas, (3) manuales de costos y rendimientos publicados (citar edición y página). Indicar el origen en la columna Nota de cada línea.
+## Reutilizar cuadros anteriores
 
-## Precios de insumos (hoja Insumos)
+`scripts/extraer_cdp.py` convierte un cuadro de precios JMS existente en JSON con partidas, APU, materiales, tarifas y referencias. Usarlo para:
 
-- Precios netos, sin IVA, con **fuente y fecha** (cotización, lista de precios de proveedor, contrato anterior).
-- Pueden ingresarse en CLP o en UF; la planilla convierte con la UF vigente.
-- Un insumo se ingresa una vez y lo usan todos los APU: si cambia un precio, se actualizan todos los ítems.
-- Nunca inventar precios. Si falta uno, dejarlo vacío y listarlo en la entrega como pendiente, o usar un valor de referencia marcado "REFERENCIAL" con su fuente.
+1. Buscar ítems iguales o parecidos y reutilizar su APU (recursos, cantidades por unidad, pérdidas), ajustando cantidades al nuevo proyecto.
+2. Reutilizar la base de materiales y tarifas, **actualizando precios y fechas** antes de usarlos (un precio de 2023 no sirve sin reajuste o nueva cotización).
 
-## Partidas sin APU
+## Recargos del cuadro de precios
 
-Si una partida se cotiza completa (estructura metálica suministrada y montada, ventanas, ascensor), ingresar su P.U. directo en la hoja Partidas, con el origen ("Cotización proveedor X, fecha").
+Costo directo + gastos generales (% sobre CD) + utilidades (% sobre CD) + imprevistos (si se usan) = total neto; + IVA 19 % = total bruto. En el CDP-001: GG 25 % y utilidades 12 %. Confirmar para cada proyecto.
 
-## Control de calidad del APU
+## Controles antes de entregar
 
-- Unidades coherentes: la cantidad de cada línea está en la unidad del insumo por unidad de la partida.
-- El % de pérdida es razonable y está explicado en la nota (despuntes, traslapos, derrames).
-- Comparar el P.U. resultante con históricos de JMS o con la tabla MINVU convertida a la unidad de la partida; si difiere mucho, revisar.
+- **Cada APU divide por su propia cantidad.** En el CDP-001 había dos bloques que dividían por la cantidad de otro ítem (3.6.3 y 3.7.1). El generador evita este error porque cada bloque usa su propia celda de cantidad; al copiar bloques a mano, revisarlo.
+- Unidades coherentes entre la cantidad del recurso y su precio (sacos, planchas, cajas, m²).
+- Pérdidas razonables y explicadas.
+- Comparar P.U. con cuadros anteriores de JMS y con la estimación paramétrica (hoja Estimación m²).

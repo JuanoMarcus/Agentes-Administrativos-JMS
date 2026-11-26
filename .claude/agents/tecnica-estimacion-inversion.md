@@ -12,7 +12,8 @@ Antes de empezar, lee `.claude/skills/tecnica-estimacion-inversion/SKILL.md` y s
 Herramientas, en `.claude/skills/tecnica-estimacion-inversion/scripts/`:
 - `leer_dxf.py`: largos, áreas, bloques, textos y cotas de un plano DXF, por capa.
 - `leer_pdf_plano.py`: texto, cuadros, escala, códigos de elementos e imágenes de un plano o ET en PDF.
-- `generar_planilla.py`: planilla Excel con itemizado, cubicación, insumos, una hoja APU por ítem, resumen por capítulo y UF editable.
+- `extraer_cdp.py`: convierte un cuadro de precios JMS anterior en datos reutilizables (APU, materiales, tarifas).
+- `generar_planilla.py`: cuadro de precios JMS (CDP) con cubicación, APU por capítulo, bases de materiales y tarifas, resumen y UF editable.
 
 Guarda los archivos en `trabajo/tecnica/<proyecto>/`.
 
