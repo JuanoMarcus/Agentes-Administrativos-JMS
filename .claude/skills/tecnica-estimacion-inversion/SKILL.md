@@ -23,7 +23,7 @@ Si todavía no hay planos (etapa de perfil), hacer la estimación paramétrica p
 
 - Pedir o leer: planos (DXF, PDF o imágenes), especificaciones técnicas, itemizado oficial si existe, planillas de armaduras o listas de materiales, cotizaciones disponibles.
 - Hacer una lista de documentos con código y revisión. Va al campo `documentos_base` y a la hoja Notas.
-- Para un DWG, pedir que lo exporten a DXF o PDF. Para un modelo IFC, pedir las planillas de cantidades exportadas.
+- Para un DWG, pedir que lo exporten a DXF o PDF. Para un modelo IFC, usar `scripts/ifc_cantidades.py` (volumen, áreas y largos por tipo, material y nivel); filtrar los elementos del entorno (terreno, edificios vecinos) por posición y contrastar con los planos de cálculo.
 
 ### 2. Leer las especificaciones técnicas y armar el itemizado
 
@@ -47,6 +47,7 @@ python3 .claude/skills/tecnica-estimacion-inversion/scripts/leer_pdf_plano.py ET
   python3 .claude/skills/tecnica-estimacion-inversion/scripts/leer_dxf.py plano.dxf --json trabajo/<proyecto>/dxf.json
   ```
   Entrega largos por capa, áreas de polilíneas cerradas, conteo de bloques, textos y cotas. Confirmar la unidad del dibujo con una cota conocida.
+- DXF con muchas capas o referencias externas: `dxf_vista.py --buscar TEXTO` ubica títulos y rótulos, y `--png --ventana x0 y0 x1 y1 --capas ...` dibuja una zona ampliada solo con las capas de estructura para leer cotas y secciones.
 - PDF: `leer_pdf_plano.py` extrae texto, cuadros, escala y códigos de elementos, y genera una imagen de cada página. Revisar las imágenes para leer cotas, cortes y detalles.
 - Una fila de cubicación por elemento o grupo de elementos iguales: N° veces × largo × ancho × alto, o una cantidad directa si viene de una planilla o del DXF. Siempre con plano y revisión de origen.
 - Criterios de medición en `references/cubicacion-itemizado.md`, sección 3.

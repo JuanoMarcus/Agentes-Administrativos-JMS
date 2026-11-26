@@ -10,7 +10,7 @@
 | PDF escaneado o imagen | Lectura visual de las imágenes | Medidas acotadas; declarar "leído de imagen" |
 | Especificaciones técnicas (PDF o Word) | `leer_pdf_plano.py` o lectura directa | Partidas, materiales, calidades, espesores, normas, alcances y exclusiones |
 | Planillas de armaduras o listas de materiales | Lectura directa (Excel, PDF) | kg de acero por elemento, perfiles y pesos |
-| Modelo IFC | No hay lector instalado: pedir planillas de cantidades exportadas del modelo | Cantidades por elemento |
+| Modelo IFC (IFC2X3/IFC4) | `scripts/ifc_cantidades.py modelo.ifc salida.json --csv elementos.csv` | Volumen, área superior, área vertical y largo por elemento, con material, nivel y posición; resumen por tipo/material/nivel. El modelo de arquitectura incluye entorno y elementos no estructurales: filtrar por posición y validar con planos de cálculo |
 
 Reglas:
 - **Solo medidas acotadas o leídas de capas o tablas.** No medir a escala sobre una imagen salvo que no haya otra opción; en ese caso, declararlo en Observaciones con la escala usada.
